@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using calendarApp.Data;
 
@@ -10,9 +11,11 @@ using calendarApp.Data;
 namespace calendarApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230410125934_calendarsLocationsEvents")]
+    partial class calendarsLocationsEvents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -21,6 +24,9 @@ namespace calendarApp.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CalendarId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -43,6 +49,8 @@ namespace calendarApp.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CalendarId");
+
                     b.HasIndex("LocationId");
 
                     b.HasIndex("UserId");
@@ -62,21 +70,6 @@ namespace calendarApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("CalendarEvent", b =>
-                {
-                    b.Property<int>("CalendarId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("EventsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("CalendarId", "EventsId");
-
-                    b.HasIndex("EventsId");
-
-                    b.ToTable("CalendarEvent");
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -440,6 +433,10 @@ namespace calendarApp.Data.Migrations
 
             modelBuilder.Entity("CalendarApp.Models.Event", b =>
                 {
+                    b.HasOne("calendarApp.Models.Calendar", null)
+                        .WithMany("Events")
+                        .HasForeignKey("CalendarId");
+
                     b.HasOne("CalendarApp.Models.Location", "Location")
                         .WithMany("Events")
                         .HasForeignKey("LocationId")
@@ -453,21 +450,6 @@ namespace calendarApp.Data.Migrations
                     b.Navigation("Location");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CalendarEvent", b =>
-                {
-                    b.HasOne("calendarApp.Models.Calendar", null)
-                        .WithMany()
-                        .HasForeignKey("CalendarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CalendarApp.Models.Event", null)
-                        .WithMany()
-                        .HasForeignKey("EventsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -536,6 +518,11 @@ namespace calendarApp.Data.Migrations
             modelBuilder.Entity("calendarApp.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Calendars");
+                });
+
+            modelBuilder.Entity("calendarApp.Models.Calendar", b =>
+                {
+                    b.Navigation("Events");
                 });
 #pragma warning restore 612, 618
         }

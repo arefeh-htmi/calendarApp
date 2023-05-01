@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
-import { Layout } from './components/Layout';
+import AppRoutes from '../../Client/src/AppRoutes';
+import AuthorizeRoute from '../../Client/src/components/api-authorization/AuthorizeRoute';
+import { Layout } from '../../Client/src/components/Layout';
 import './custom.css';
 
 export default class App extends Component {

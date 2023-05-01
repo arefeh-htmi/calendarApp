@@ -1,0 +1,31 @@
+name: "Main"
+on: pull_request
+jobs:
+  lint-and-test:
+    name: Run linters and then tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run ESLint
+        run: pnpm run lint:scripts
+      - name: Run Stylelint
+        run: pnpm run lint:styles
+      - name: Run Tests
+        run: pnpm test
+        env:
+          CI: true
+      - name: Run Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          build: pnpm run build
+          start: pnpm run serve -- --port=3000
+          wait-on: http://localhost:3000
+          browser: chrome
+          headless: true

@@ -2,27 +2,28 @@
 
 # Backend app:
 
-Used Technology:
+
+<h4>Used Technology:</h4>
 -C# /.NET
 -Entity framework as ORM
 -AutoMapper: https://docs.automapper.org/en/stable/Getting-started.html
 -For Authentication: JWT
 -Swagger
 
-The app:
+<h5>The app:</h5>
 -Basic Authentication, Authrization 
 -Calendar, Evnet, Location
 -Added DB seeder
 -CORS for additional security
 
-Improvments:
+<h5>Improvments:</h5>
 -Do the TODOs
 -Use async instead
 
 
 # Frontend app:
 
-Used technology :
+<h4>Used technology :</h4>
 -Vite 
 -Pnpm
 -React
@@ -45,6 +46,6 @@ CI:
 -Github Actions
 
 
-TODOS:
+<h5>TODOS:</h5>
 -Add Calendar
 

@@ -11,10 +11,12 @@
 -Swagger
 
 <h5>The app:</h5>
--Basic Authentication, Authrization 
--Calendar, Evnet, Location
--Added DB seeder
--CORS for additional security
+<ul>
+<li>-Basic Authentication, Authrization  </li>
+<li>-Calendar, Evnet, Location </li>
+<li>-Added DB seeder </li>
+<li>-CORS for additional security </li>
+</ul>
 
 <h5>Improvments:</h5>
 -Do the TODOs
@@ -24,26 +26,28 @@
 # Frontend app:
 
 <h4>Used technology :</h4>
--Vite 
--Pnpm
--React
--Typescript 
+<ul>
+<li>-Vite </li>
+<li>-Pnpm </li>
+<li>-React </li>
+<li>-Typescript  </li>
 
--EsLint with following plugins as linting solution: 
--Stylelint
--Prettier
--Storybook 
+<li>-EsLint with following plugins as linting solution:  </li>
+<li>-Stylelint </li>
+<li>-Prettier </li>
+<li>-Storybook  </li>
 
-For testing
--Jest
--Cypress for e2e
+<li>For testing </li>
+<li>-Jest </li>
+<li>-Cypress for e2e </li>
 
-CD:
--Cloudfare 
--Chromatic
+<li>CD: </li>
+<li>-Cloudfare  </li>
+<li>-Chromatic </li>
 
-CI:
--Github Actions
+<li>CI: </li>
+<li>-Github Actions </li>
+</ul>
 
 
 <h5>TODOS:</h5>

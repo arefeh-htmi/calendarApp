@@ -4,11 +4,13 @@
 
 
 <h4>Used Technology:</h4>
--C# /.NET
--Entity framework as ORM
--AutoMapper: https://docs.automapper.org/en/stable/Getting-started.html
--For Authentication: JWT
--Swagger
+<ul>
+<li>C# /.NET </li>
+<li>Entity framework as ORM</li>
+<li>AutoMapper: https://docs.automapper.org/en/stable/Getting-started.html </li>
+<li>JWT, For Authentication </li>
+<li>Swagger</li>
+</ul>
 
 <h5>The app:</h5>
 <ul>
@@ -18,10 +20,9 @@
 <li>-CORS for additional security </li>
 </ul>
 
-<h5>Improvments:</h5>
--Do the TODOs
+<h5>Todos/Improvments:</h5>
+-Do the TODO comments <br/>
 -Use async instead
-
 
 # Frontend app:
 
@@ -51,5 +52,5 @@
 
 
 <h5>TODOS:</h5>
--Add Calendar
+-Add Calendar <br/>
 

@@ -54,3 +54,14 @@
 <h5>TODOS:</h5>
 -Add Calendar <br/>
 
+
+#How to run app:
+
+Frontend :
+install by `pnpm install`
+run by `pnpm dev`
+
+
+On visual studio :
+open the .sln file in visual studio
+Run the app

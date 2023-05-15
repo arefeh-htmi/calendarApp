@@ -1,11 +1,11 @@
 name: "Main"
-on: pull_request
+on: pull_request # will trigger a GitHub Actions workflow on pull requests.
 jobs:
   lint-and-test:
     name: Run linters and then tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 # to get the latest code changes
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -24,8 +24,8 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          build: pnpm run build
-          start: pnpm run serve -- --port=3000
-          wait-on: http://localhost:3000
+          build: pnpm run build:vite
+          start: pnpm run serve -- --port=5173
+          wait-on: http://localhost:5173
           browser: chrome
           headless: true

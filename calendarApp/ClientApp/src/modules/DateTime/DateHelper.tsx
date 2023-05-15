@@ -1,10 +1,5 @@
-import {
-  THIS_YEAR,
-  THIS_MONTH,
-  WEEK_DAYS,
-  CALENDAR_MONTHS,
-  CALENDAR_WEEKS,
-} from './Constants'
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { THIS_YEAR, THIS_MONTH, CALENDAR_WEEKS } from './Constants'
 
 // Pads a string value with leading zeroes(0) until length is reached
 // For example: zeroPad(5, 2) => "05"
@@ -103,19 +98,19 @@ export const getDaysInMonth = (month = THIS_MONTH, year = THIS_YEAR) => {
   const prevMonthDays = getMonthDays(prevMonth, prevMonthYear)
   // Builds dates to be displayed from previous month
 
-  const prevMonthDates = [...new Array(daysFromPrevMonth)].map((n, index) => {
+  const prevMonthDates = [...new Array(daysFromPrevMonth)].map((_, index) => {
     const day = index + 1 + (prevMonthDays - daysFromPrevMonth)
     return [prevMonthYear, zeroPad(prevMonth, 2), zeroPad(day, 2)]
   })
   // Builds dates to be displayed from current month
 
-  const thisMonthDates = [...new Array(monthDays)].map((n, index) => {
+  const thisMonthDates = [...new Array(monthDays)].map((_, index) => {
     const day = index + 1
     return [year, zeroPad(month, 2), zeroPad(day, 2)]
   })
   // Builds dates to be displayed from next month
 
-  const nextMonthDates = [...new Array(daysFromNextMonth)].map((n, index) => {
+  const nextMonthDates = [...new Array(daysFromNextMonth)].map((_, index) => {
     const day = index + 1
     return [nextMonthYear, zeroPad(nextMonth, 2), zeroPad(day, 2)]
   })

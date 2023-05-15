@@ -1,6 +1,6 @@
-import React from 'react'
-
-interface ButtonProps {}
+interface ButtonProps {
+  children: JSX.Element
+}
 
 // const StyledButton = styled.Button``
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Home } from './Home/Home'
 import { LoginPage } from './Authorization/LoginPage'

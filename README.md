@@ -56,6 +56,8 @@
 
 
 #How to run app:
+Add CHROMATIC_PROJECT_TOKEN to github repo settings secrets
+
 
 Frontend :
 install by `pnpm install`

@@ -27,5 +27,6 @@ dist-ssr
 # testing
 /coverage
 
-
+#env
+.env.*
 

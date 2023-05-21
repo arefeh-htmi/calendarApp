@@ -81,7 +81,7 @@ builder.Services.AddAuthentication (options => {
 		ValidIssuer = builder.Configuration ["Jwt:Issuer"],
 		ValidAudience = builder.Configuration ["Jwt:Audience"],
 		IssuerSigningKey = new SymmetricSecurityKey
-	    (Encoding.UTF8.GetBytes (builder.Configuration ["Jwt:Key"])),
+	    (Encoding.UTF8.GetBytes (builder.Configuration ["Jwt:Key"] ?? "")),
 		ValidateIssuer = true,
 		ValidateAudience = true,
 		ValidateLifetime = false,
@@ -89,8 +89,6 @@ builder.Services.AddAuthentication (options => {
 	};
 });
 builder.Services.AddAuthorization ();
-
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 //Add CORS
 builder.Services.AddCors (options => {
@@ -118,7 +116,7 @@ app.UseAuthentication ();
 app.UseAuthorization ();
 
 //use cors
-app.UseCors();
+app.UseCors ();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment ()) {
@@ -126,8 +124,6 @@ if (app.Environment.IsDevelopment ()) {
 	app.UseSwaggerUI ();
 	app.UseSeedDB ();
 }
-
-app.MapControllers();
 
 app.Run ();
 

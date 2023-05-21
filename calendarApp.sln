@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1705.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calendarApp", "calendarApp\calendarApp.csproj", "{B0F9803D-78B0-4577-8FE3-A8A752FB561B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calendarApp", "calendarAppAPI\calendarApp.csproj", "{B0F9803D-78B0-4577-8FE3-A8A752FB561B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

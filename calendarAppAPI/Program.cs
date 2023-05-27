@@ -13,6 +13,9 @@ using calendarApp.Filters;
 using Microsoft.OpenApi.Models;
 using CalendarApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http.Headers;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder (args);
 
@@ -28,7 +31,7 @@ builder.Services.AddControllers (options =>
 
 builder.Services.AddEndpointsApiExplorer ();
 builder.Services.AddSwaggerGen (option => {
-	option.SwaggerDoc ("v1", new OpenApiInfo { Title = "HR Application", Version = "v1" });
+	option.SwaggerDoc ("v1", new OpenApiInfo { Title = "Calendar app", Version = "v1" });
 	option.AddSecurityDefinition ("Bearer", new OpenApiSecurityScheme {
 		In = ParameterLocation.Header,
 		Description = "Please enter a valid token",

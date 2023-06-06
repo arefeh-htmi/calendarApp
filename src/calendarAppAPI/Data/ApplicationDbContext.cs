@@ -15,20 +15,6 @@ public class ApplicationDbContext : DbContext {
 	protected override void OnModelCreating (ModelBuilder builder)
 	{
 		base.OnModelCreating (builder);
-
-		//builder.Entity<UserCalendar> ()
-		//    .HasKey (ue => new { ue.UserId, ue.CalendarId });
-
-		//builder.Entity<Calendar> ()
-		//    .HasMany (e => e.Users)
-		//    .WithMany (e => e.Calendars)
-		//    .Map((m) => {
-		//	    m.ToTable("UserCalendar");
-		//	    m.MapLeftKey("CalendarId");
-		//	    m.MapRightKey("UserId");
-		//	 }
-		//    );
-
 	}
 
 	protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
@@ -38,8 +24,6 @@ public class ApplicationDbContext : DbContext {
 			   .SetBasePath (Directory.GetCurrentDirectory ())
 			   .AddJsonFile ("appsettings.json")
 			   .Build ();
-			var connectionString = configuration.GetConnectionString ("DefaultConnection");
-			optionsBuilder.UseSqlite (connectionString);
 		}
 	}
 	public DbSet<ApplicationUser> Users { get; set; }

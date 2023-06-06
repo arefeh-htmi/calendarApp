@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  clientapp:
+      image: clientapp
+      build:
+        context: .
+        dockerfile: src/CalenarAppClient/Dockerfile
+      tty: true
+      ports:
+        - "6363:6363"
+      environment:
+      - NODE_ENV=production
+      restart: unless-stopped
+      networks:
+        - calendarapp
+
+   
+  calendarapp:
+    image: calendarapp
+    build:
+      context: .
+      dockerfile: src/calendarAppAPI/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - db_sqlite
+    ports:
+      - "64407:64407"
+    restart: unless-stopped
+    networks:
+      - calendarapp
+
+  db_sqlite:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./db/:/root/db/
+    networks:
+    - calendarapp
+
+networks:
+    calendarapp:

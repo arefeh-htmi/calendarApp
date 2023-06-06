@@ -49,8 +49,8 @@ builder.Services.AddSwaggerGen (option => {
 
 //@TODO: save the DefaultConnection in a safer place like key vault in azure....
 
-
-var connectionString = builder.Configuration.GetConnectionString ("DefaultConnection") ?? throw new InvalidOperationException ("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration["DATABASE_URL"];
+	//Configuration.GetConnectionString ("DefaultConnection") ?? throw new InvalidOperationException ("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext> (options =>
     options.UseSqlite (connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter ();
@@ -113,10 +113,23 @@ builder.Services.AddTransient<EventService> ();
 
 var app = builder.Build ();
 
-app.UseHttpsRedirection ();
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
 
 app.UseAuthentication ();
 app.UseAuthorization ();
+
+app.MapControllers();
+app.MapFallbackToFile("index.html");
 
 //use cors
 app.UseCors ();

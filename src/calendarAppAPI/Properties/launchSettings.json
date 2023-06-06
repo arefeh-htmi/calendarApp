@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:49612",
-      "sslPort": 44362
+      "applicationUrl": "http://localhost:54985",
+      "sslPort": 44330
     }
   },
   "profiles": {
@@ -19,10 +19,20 @@
     "CalendarApp": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:61311;http://localhost:54117",
+      "applicationUrl": "http://localhost:64407",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:64407",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+      },
+      "useSSL": true
     }
   }
 }
